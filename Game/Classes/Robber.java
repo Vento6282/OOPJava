@@ -1,4 +1,4 @@
-package OOPJava.Game;
+package OOPJava.Game.Classes;
 
 public class Robber extends BaseCharacter {
 
@@ -12,7 +12,7 @@ public class Robber extends BaseCharacter {
     }
 
     @Override
-    void attack(BaseCharacter target){
-        target.getDamage(agility);
+    public void attack(BaseCharacter target){
+        target.getPhysicDamage(agility);
     }
 }
