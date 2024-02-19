@@ -4,9 +4,8 @@ public class Sniper extends Character {
     
     int arrows = 20;
 
-    protected Sniper(String name, int health, int healthMax, int defensePhysical, int defenseMagic, int strength,
-            int agility, int intellect, int speed, int range) {
-        super(name, health, healthMax, defensePhysical, defenseMagic, strength, agility, intellect, speed, range);
+    public Sniper(String name, int x, int y) {
+        super(name, x, y, 90, 90, 6, 5, 5, 15, 5, 5, 7);
     }
 
     @Override

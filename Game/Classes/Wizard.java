@@ -4,8 +4,8 @@ public class Wizard extends Character{
 
     int mana = 100;
 
-    protected Wizard(String name, int health, int healthMax, int defensePhysical, int defenseMagic, int strength, int agility, int intellect, int speed, int range) {
-        super(name, health, healthMax, defensePhysical, defenseMagic, strength, agility, intellect, speed, range);
+    public Wizard(String name, int x, int y) {
+        super(name, x, y, 80, 80, 5, 10, 5, 5, 20, 4, 5);
     }
     
     public void getAttack(Character target){

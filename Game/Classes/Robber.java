@@ -2,9 +2,8 @@ package OOPJava.Game.Classes;
 
 public class Robber extends Character {
 
-    protected Robber(String name, int health, int healthMax, int defensePhysical, int defenseMagic, int strength,
-            int agility, int intellect, int speed, int range) {
-        super(name, health, healthMax, defensePhysical, defenseMagic, strength, agility, intellect, speed, range);
+    public Robber(String name, int x, int y) {
+        super(name, x, y, 110, 110, 8, 5, 10, 15, 5, 6, 1);
     }
 
     @Override

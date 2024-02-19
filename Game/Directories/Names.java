@@ -1,4 +1,4 @@
-package OOPJava.Game.Lists;
+package OOPJava.Game.Directories;
 
 public enum Names {
     Oliver, Jake, Noah, James, Connor, Liam, John, Harry, Callum, Mason, Robert, Jacob,	Michael, Charlie, Kyl, 

@@ -1,19 +1,25 @@
 package OOPJava.Game.Classes;
 
+import OOPJava.Game.Position;
+
 public abstract class Character {
-    protected String name;           // имя
-    protected int health;      // здоровье
-    protected int healthMax;   // максимальное здоровье
-    protected int defensePhysical;       // защита
-    protected int defenseMagic;    // магическая защита
-    protected int strength;     // сила
-    protected int agility;      // ловкость
-    protected int intellect;    // интелект
-    protected int speed;         // скорость
-    protected int range;         // дальность атаки
+
+    protected String name;          // имя
+    protected int health;           // здоровье
+    protected int healthMax;        // максимальное здоровье
+    protected int defensePhysical;  // защита
+    protected int defenseMagic;     // магическая защита
+    protected int strength;         // сила
+    protected int agility;          // ловкость
+    protected int intellect;        // интелект
+    protected int speed;            // скорость
+    protected int range;            // дальность атаки
+    public Position position;
+
     
-    protected Character(String name, int health, int healthMax, int defensePhysical, int defenseMagic, int strength, int agility, int intellect, int speed, int range){
+    protected Character(String name, int x, int y, int health, int healthMax, int defensePhysical, int defenseMagic, int strength, int agility, int intellect, int speed, int range){
         this.name = name;
+        this.position = new Position(x, y);
         this.health = health;
         this.healthMax = healthMax;
         this.defensePhysical = defensePhysical;
@@ -50,6 +56,6 @@ public abstract class Character {
     }
 
     public String toString(){
-        return this.getClass().getSimpleName() + " " + this.name;
+        return this.getClass().getSimpleName() + " " + this.name + " (" + this.position.getX() + "," + this.position.getY() + ")"; 
     }
 }

@@ -2,7 +2,7 @@ package OOPJava.Game.Classes;
 
 public class Peasant extends Character{
 
-    protected Peasant(String name, int health, int healthMax, int defensePhysical, int defenseMagic, int strength, int agility, int intellect, int speed, int range) {
-        super(name, health, healthMax, defensePhysical, defenseMagic, strength, agility, intellect, speed, range);
+    public Peasant(String name, int x, int y) {
+        super(name, x, y, 80, 80, 5, 5, 8, 5, 5, 4, 1);
     }
 }
