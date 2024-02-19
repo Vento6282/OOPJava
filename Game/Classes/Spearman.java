@@ -1,12 +1,10 @@
 package OOPJava.Game.Classes;
 
-public class Spearman extends BaseCharacter {
-    public Spearman(String name) {
-        super(name);
-        this.health += 20;
-        this.healthMax += 20;
-        this.defense += 1;
-        this.strength += 5;
-        this.agility -= 1;
+public class Spearman extends Character {
+
+    protected Spearman(String name, int health, int healthMax, int defensePhysical, int defenseMagic, int strength,
+            int agility, int intellect, int speed, int range) {
+        super(name, health, healthMax, defensePhysical, defenseMagic, strength, agility, intellect, speed, range);
     }
+
 }

@@ -1,20 +1,16 @@
 package OOPJava.Game.Classes;
 
-public class Sniper extends BaseCharacter {
+public class Sniper extends Character {
+    
     int arrows = 20;
-    public Sniper(String name) {
-        super(name);
-        this.health -= 10;
-        this.healthMax -= 10;  
-        this.defense -= 2;      
-        this.strength -= 5;     
-        this.agility += 10;      
-        this.speed += 2;        
-        this.range += 3;    
+
+    protected Sniper(String name, int health, int healthMax, int defensePhysical, int defenseMagic, int strength,
+            int agility, int intellect, int speed, int range) {
+        super(name, health, healthMax, defensePhysical, defenseMagic, strength, agility, intellect, speed, range);
     }
 
     @Override
-    public void attack(BaseCharacter target){
+    public void attack(Character target){
         if(arrows !=0){
             target.getPhysicDamage(agility);
             arrows--;
