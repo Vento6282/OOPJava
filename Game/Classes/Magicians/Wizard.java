@@ -1,11 +1,13 @@
-package OOPJava.Game.Classes;
+package OOPJava.Game.Classes.Magicians;
 
-public class Wizard extends Character{
+import OOPJava.Game.Classes.Character;
+
+public class Wizard extends Magician{
 
     int mana = 100;
 
-    public Wizard(String name, int x, int y) {
-        super(name, x, y, 80, 80, 5, 10, 5, 5, 20, 4, 5);
+    public Wizard(String name ,String team, int x, int y) {
+        super(name, team, x, y, 80, 80, 5, 10, 5, 5, 20, 4, 5, 100);
     }
     
     public void getAttack(Character target){

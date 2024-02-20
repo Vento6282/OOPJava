@@ -1,11 +1,13 @@
-package OOPJava.Game.Classes;
+package OOPJava.Game.Classes.Bowmans;
 
-public class Crossbowman extends Character{
+import OOPJava.Game.Classes.Character;
+
+public class Crossbowman extends Bowman{
 
     int arrows = 20;
 
-    public Crossbowman(String name, int x, int y) {
-        super(name, x, y, 90, 90, 7, 5, 10, 10, 5, 4, 5);
+    public Crossbowman(String name ,String team, int x, int y) {
+        super(name, team, x, y, 90, 90, 7, 5, 10, 10, 5, 4, 5, 20);
     }
 
     @Override
