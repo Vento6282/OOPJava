@@ -7,7 +7,7 @@ public class Wizard extends Magician{
     int mana = 100;
 
     public Wizard(String name ,String team, int x, int y) {
-        super(name, team, x, y, 80, 80, 5, 10, 5, 5, 20, 4, 5, 100);
+        super(name, team, x, y, 80, 80, 5, 10, 5, 5, 20, 1, 5, 100);
     }
     
     public void getAttack(Character target){
@@ -18,4 +18,6 @@ public class Wizard extends Magician{
             target.getPhysicDamage(strength);
         } 
     }
+
+
 }

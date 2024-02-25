@@ -1,5 +1,7 @@
 package OOPJava.Game.Classes.Bowmans;
 
+import java.util.ArrayList;
+
 import OOPJava.Game.Classes.Character;
 
 public abstract class Bowman extends Character{
@@ -15,4 +17,13 @@ public abstract class Bowman extends Character{
     public void createArrows(){
         this.arrows += 5;
     }
+
+    @Override
+    public void step(ArrayList<Character> teamBlue, ArrayList<Character> teamRed) {
+        if(!this.isDead() && this.arrows > 0){
+            if(this.team == "red"){
+                this.attack(searchTarget(teamBlue));
+            } else {this.attack(searchTarget(teamRed));}
+        }
+    }   
 }

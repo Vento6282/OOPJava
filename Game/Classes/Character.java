@@ -5,7 +5,7 @@ import java.util.HashMap;
 
 import OOPJava.Game.Position;
 
-public abstract class Character {
+public abstract class Character implements Step{
 
     protected String name;          // имя
     protected String team;          // команда
@@ -18,7 +18,7 @@ public abstract class Character {
     protected int intellect;        // интелект
     protected int speed;            // скорость
     protected int range;            // дальность атаки
-    public Position position;
+    public Position position;       // позиция
 
     
     protected Character(String name, String team, int x, int y, int health, int healthMax, int defensePhysical, int defenseMagic, int strength, int agility, int intellect, int speed, int range){
@@ -58,8 +58,13 @@ public abstract class Character {
         this.health -= damage;
     }
 
+    public boolean isDead(){
+        if(health == 0){return true;}
+        else {return false;}
+    }
+
     public String toString(){
-        return this.getClass().getSimpleName() + " " + this.name + " (" + this.position.getX() + "," + this.position.getY() + ")"; 
+        return this.getClass().getSimpleName() + " " + this.name + " " + this.health  + " (" + this.position.getX() + "," + this.position.getY() + ")" ; 
     }
 
     public Character searchTarget(ArrayList<Character> targetTeam){
@@ -79,5 +84,10 @@ public abstract class Character {
         }
         return result;
     }
+    
+    public Integer getSpeed(){
+        return this.speed;
+    }
+
 
 }

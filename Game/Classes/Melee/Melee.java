@@ -1,5 +1,7 @@
 package OOPJava.Game.Classes.Melee;
 
+import java.util.ArrayList;
+
 import OOPJava.Game.Classes.Character;
 
 public abstract class Melee extends Character{
@@ -9,4 +11,8 @@ public abstract class Melee extends Character{
         super(name, team, x, y, health, healthMax, defensePhysical, defenseMagic, strength, agility, intellect, speed, range);
     }
     
+        @Override
+    public void step(ArrayList<Character> teamBlue, ArrayList<Character> teamRed) {
+
+    }   
 }

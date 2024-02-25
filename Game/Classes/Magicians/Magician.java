@@ -1,5 +1,7 @@
 package OOPJava.Game.Classes.Magicians;
 
+import java.util.ArrayList;
+
 import OOPJava.Game.Classes.Character;
 
 public abstract class Magician extends Character {
@@ -12,4 +14,8 @@ public abstract class Magician extends Character {
         this.mana = mana;
     }
     
+        @Override
+    public void step(ArrayList<Character> teamBlue, ArrayList<Character> teamRed) {
+
+    }   
 }
