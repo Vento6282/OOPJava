@@ -13,21 +13,28 @@ public class Main {
     public static void main(String[] args) {
         ArrayList <Character> teamRed = new ArrayList<>();
         ArrayList <Character> teamBlue = new ArrayList<>();
-        createCharacterTeams(5, teamRed, teamBlue);
-        ArrayList <Character> allTeams = new ArrayList<>();
-        allTeams.addAll(teamRed);
-        allTeams.addAll(teamBlue);
-        allTeams.sort((o1, o2) -> o2.getSpeed() - o1.getSpeed());
-        System.out.println(allTeams);
-        System.out.println();
+        // createCharacterTeams(5, teamRed, teamBlue);
+        // ArrayList <Character> allTeams = new ArrayList<>();
+        // allTeams.addAll(teamRed);
+        // allTeams.addAll(teamBlue);
+        // allTeams.sort((o1, o2) -> o2.getSpeed() - o1.getSpeed());
+        // System.out.println(allTeams);
+        // System.out.println();
 
-        teamRed.add(new Sniper(getName(), "red", 0, 5));
-        teamBlue.add(new Monk(getName(), "blue", 5, 0));
-        System.out.println("До хода снайпера:");
-        System.out.println(teamBlue.get(5).toString()); 
-        teamRed.get(5).step(teamBlue, teamRed);
-        System.out.println("После хода снайпера:");  
-        System.out.println(teamBlue.get(5).toString()); 
+        teamRed.add(new Spearman(getName(), "red", 1, 1));
+        teamBlue.add(new Peasant(getName(), "blue", 3, 1));
+        teamBlue.add(new Peasant(getName(), "blue", 4, 1));
+
+        for (int i = 1; i <= 10; i++){
+            System.out.println("Ход " + i + ": ");
+            teamRed.get(0).step(teamBlue, teamRed);
+            System.out.println(teamRed.get(0).toString()); 
+            System.out.println(teamBlue.get(0).toString()); 
+            System.out.println(teamBlue.get(1).toString()); 
+
+        }
+        
+
     }
 
     private static String getName(){

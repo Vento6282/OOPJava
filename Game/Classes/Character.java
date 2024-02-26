@@ -59,7 +59,7 @@ public abstract class Character implements Step{
     }
 
     public boolean isDead(){
-        if(health == 0){return true;}
+        if(this.health <= 0){return true;}
         else {return false;}
     }
 
@@ -69,17 +69,16 @@ public abstract class Character implements Step{
 
     public Character searchTarget(ArrayList<Character> targetTeam){
         HashMap<Character, Double> listDistanse = new HashMap<>();
-        Double min = Position.searchPosition(this.position.getX(), this.position.getY(), targetTeam.get(0).position.getX(), targetTeam.get(0).position.getY());
+        Double min = 10000.0;;
         for (Character character : targetTeam) {
-            Double distanse = Position.searchPosition(this.position.getX(), this.position.getY(), character.position.getX(), character.position.getY());
-            if (distanse <= min){min = distanse;}
+            Double distanse = position.distanse(this.position.getX(), this.position.getY(), character.position.getX(), character.position.getY());
+            if (distanse <= min && !character.isDead()){min = distanse;}
             listDistanse.put(character, distanse);
         }
         Character result = null;
         for (Character character : listDistanse.keySet()) {
             if (listDistanse.get(character) == min){
                 result = character;
-                
             };
         }
         return result;
@@ -88,6 +87,7 @@ public abstract class Character implements Step{
     public Integer getSpeed(){
         return this.speed;
     }
+
 
 
 }
