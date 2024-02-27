@@ -5,7 +5,7 @@ import OOPJava.Game.Classes.Character;
 public class Robber extends Melee {
 
     public Robber(String name ,String team, int x, int y) {
-        super(name, team, x, y, 110, 110, 8, 5, 10, 15, 5, 2, 1);
+        super(name, team, x, y, 110, 110, 8, 5, 10, 15, 5, 2);
     }
 
     @Override
@@ -13,4 +13,7 @@ public class Robber extends Melee {
         target.getPhysicDamage(agility);
     }
 
+    public String getInfo(){
+        return "Разбойник";
+    }
 }

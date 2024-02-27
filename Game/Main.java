@@ -2,6 +2,7 @@ package OOPJava.Game;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 
 import OOPJava.Game.Classes.Character;
 import OOPJava.Game.Classes.Bowmans.*;
@@ -10,31 +11,29 @@ import OOPJava.Game.Classes.Melee.*;
 import OOPJava.Game.Directories.*;
 
 public class Main {
+
+    public static ArrayList <Character> greenTeam = new ArrayList<>();
+    public static ArrayList <Character> blueTeam = new ArrayList<>();
+    public static ArrayList <Character> allTeam = new ArrayList<>();
     public static void main(String[] args) {
-        ArrayList <Character> teamRed = new ArrayList<>();
-        ArrayList <Character> teamBlue = new ArrayList<>();
-        // createCharacterTeams(5, teamRed, teamBlue);
-        // ArrayList <Character> allTeams = new ArrayList<>();
-        // allTeams.addAll(teamRed);
-        // allTeams.addAll(teamBlue);
-        // allTeams.sort((o1, o2) -> o2.getSpeed() - o1.getSpeed());
-        // System.out.println(allTeams);
-        // System.out.println();
 
-        teamRed.add(new Spearman(getName(), "red", 1, 1));
-        teamBlue.add(new Peasant(getName(), "blue", 3, 1));
-        teamBlue.add(new Peasant(getName(), "blue", 4, 1));
-
-        for (int i = 1; i <= 10; i++){
-            System.out.println("Ход " + i + ": ");
-            teamRed.get(0).step(teamBlue, teamRed);
-            System.out.println(teamRed.get(0).toString()); 
-            System.out.println(teamBlue.get(0).toString()); 
-            System.out.println(teamBlue.get(1).toString()); 
-
-        }
+        createCharacterTeams(10, greenTeam, blueTeam);
+        allTeam.addAll(greenTeam);
+        allTeam.addAll(blueTeam);
+        allTeam.sort((o1, o2) -> o2.getSpeed() - o1.getSpeed());
         
+        Scanner scanner = new Scanner(System.in);
 
+        while (!isDeadTeams(greenTeam, blueTeam)) {
+            View.view();
+            scanner.nextLine();
+            for (Character character : allTeam) {
+                if(!isDeadTeam(greenTeam) && !isDeadTeam(blueTeam)){
+                    character.step(blueTeam, greenTeam);
+                }
+            }
+        }
+        scanner.close();
     }
 
     private static String getName(){
@@ -45,10 +44,10 @@ public class Main {
         return String.valueOf(Classes.values()[new Random().nextInt(Classes.values().length)]);
     }   
 
-    public static void createCharacterTeams(int sizeTeam, ArrayList<Character> teamRed, ArrayList<Character> teamBlue){
+    public static void createCharacterTeams(int sizeTeam, ArrayList<Character> greenTeam, ArrayList<Character> blueTeam){
         for (int i = 1; i <= sizeTeam; i++){
-            teamRed.add(createCharacter("red", 0, i-1));
-            teamBlue.add(createCharacter("blue", 9, i-1));
+            greenTeam.add(createCharacter("green", i, 1));
+            blueTeam.add(createCharacter("blue", i, 10));
         }
     }
 
@@ -76,5 +75,31 @@ public class Main {
                 Character peasant = new Peasant(getName(), team, x, y);
                 return peasant;
         }
+    }
+
+    static boolean isDeadTeams(ArrayList<Character> greenTeam, ArrayList<Character> blueTeam){
+        int check = 0;
+        if(isDeadTeam(greenTeam)){
+            check += 1;
+            System.out.println("Зеленая команда победила!");
+        }
+        if(isDeadTeam(blueTeam)){
+            System.out.println("Синяя команда победила!");
+            check += 1;
+        }
+        if(check > 0){return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    static boolean isDeadTeam(ArrayList<Character> team){
+        for (Character character : team) {
+            if(!character.isDead()){
+                return false;
+            }
+        }
+        return true;
     }
 }

@@ -7,7 +7,7 @@ public class Sniper extends Bowman {
     int arrows = 20;
 
     public Sniper(String name ,String team, int x, int y) {
-        super(name, team, x, y, 90, 90, 6, 5, 5, 15, 5, 3, 7, 20);
+        super(name, team, x, y, 90, 90, 6, 5, 5, 20, 5, 3, 7, 20);
     }
 
     @Override
@@ -15,8 +15,10 @@ public class Sniper extends Bowman {
         if(arrows !=0){
             target.getPhysicDamage(agility);
             arrows--;
-        } else {
-            target.getPhysicDamage(strength);
-        } 
+        }
+    }
+
+    public String getInfo(){
+        return "Снайпер";
     }
 }

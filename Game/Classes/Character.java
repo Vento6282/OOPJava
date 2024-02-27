@@ -17,11 +17,10 @@ public abstract class Character implements Step{
     protected int agility;          // ловкость
     protected int intellect;        // интелект
     protected int speed;            // скорость
-    protected int range;            // дальность атаки
     public Position position;       // позиция
 
     
-    protected Character(String name, String team, int x, int y, int health, int healthMax, int defensePhysical, int defenseMagic, int strength, int agility, int intellect, int speed, int range){
+    protected Character(String name, String team, int x, int y, int health, int healthMax, int defensePhysical, int defenseMagic, int strength, int agility, int intellect, int speed){
         this.name = name;
         this.team = team;
         this.position = new Position(x, y);
@@ -33,7 +32,6 @@ public abstract class Character implements Step{
         this.agility = agility;
         this.intellect = intellect;
         this.speed = speed;
-        this.range = range;
     }
 
     public void attack(Character target){
@@ -64,7 +62,7 @@ public abstract class Character implements Step{
     }
 
     public String toString(){
-        return this.getClass().getSimpleName() + " " + this.name + " " + this.health  + " (" + this.position.getX() + "," + this.position.getY() + ")" ; 
+        return this.name + " HP: " + this.health; 
     }
 
     public Character searchTarget(ArrayList<Character> targetTeam){
@@ -88,6 +86,11 @@ public abstract class Character implements Step{
         return this.speed;
     }
 
+    public String getInfo(){
+        return "";
+    }
 
-
+    public String getTeam(){
+        return this.team;
+    }
 }

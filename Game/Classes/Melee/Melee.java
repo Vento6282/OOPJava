@@ -8,22 +8,22 @@ import OOPJava.Game.Classes.Character;
 public abstract class Melee extends Character{
 
     protected Melee(String name, String team, int x, int y, int health, int healthMax, int defensePhysical,
-            int defenseMagic, int strength, int agility, int intellect, int speed, int range) {
-        super(name, team, x, y, health, healthMax, defensePhysical, defenseMagic, strength, agility, intellect, speed, range);
+            int defenseMagic, int strength, int agility, int intellect, int speed) {
+        super(name, team, x, y, health, healthMax, defensePhysical, defenseMagic, strength, agility, intellect, speed);
     }
     
     @Override
-    public void step(ArrayList<Character> teamBlue, ArrayList<Character> teamRed) {
+    public void step(ArrayList<Character> teamBlue, ArrayList<Character> teamGreen) {
         if(!this.isDead()){
             Character target = null;
-            if(team == "red"){
+            if(team == "green"){
                 target = searchTarget(teamBlue);
             } else {
-                target = searchTarget(teamRed);
+                target = searchTarget(teamGreen);
             }
-            System.out.println(position.distanse(this.position.getX(), this.position.getY(), target.position.getX(), target.position.getY()));
             if(position.distanse(this.position.getX(), this.position.getY(), target.position.getX(), target.position.getY()) < 2){
-                attack(target); return;
+                attack(target); 
+                return;
             } else {
                 int x = 0;
                 int y = 0;
@@ -41,8 +41,8 @@ public abstract class Melee extends Character{
                         y = -1;
                     }
                 }
-                if(team == "red"){
-                    for (Character character : teamRed) {
+                if(team == "green"){
+                    for (Character character : teamGreen) {
                         if(character.position.getX() == position.getX() - x && character.position.getY() == position.getY() - y && !character.isDead()){return;}
                     }
                 } else {
@@ -55,4 +55,7 @@ public abstract class Melee extends Character{
             }
         }
     }  
+    public String getInfo(){
+        return "Копейщик";
+    }
 }
