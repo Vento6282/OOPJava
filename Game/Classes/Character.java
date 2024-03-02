@@ -45,8 +45,10 @@ public abstract class Character implements Step{
         } else {
             damage -= defensePhysical;
         }
-        
-        this.health -= damage;
+        if(health - damage < 0)
+            health = 0;
+        else
+            this.health -= damage;
     }
 
     public void getMagicDamage(int damage){
@@ -55,11 +57,14 @@ public abstract class Character implements Step{
         } else {
             damage -= defenseMagic;
         }
-        this.health -= damage;
+        if(health - damage < 0)
+            health = 0;
+        else
+            this.health -= damage;
     }
 
     public boolean isDead(){
-        if(this.health <= 0){return true;}
+        if(this.health == 0){return true;}
         else {return false;}
     }
 
@@ -108,4 +113,16 @@ public abstract class Character implements Step{
     public String getName(){
         return name;
     }
-}
+
+    public int getHealth(){
+        return health;
+    }
+
+    public int getHealthMax(){
+        return healthMax;
+    }
+
+    public void setHealth(int health){
+        this.health = health;
+    }
+ }
