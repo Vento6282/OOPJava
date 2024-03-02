@@ -36,6 +36,7 @@ public abstract class Character implements Step{
 
     public void attack(Character target){
         target.getPhysicDamage(strength);
+        System.out.println(name + " атаковал " + target.name + " с силой " + (strength));
     }
 
     public void getPhysicDamage(int damage){
@@ -44,6 +45,7 @@ public abstract class Character implements Step{
         } else {
             damage -= defensePhysical;
         }
+        
         this.health -= damage;
     }
 
@@ -62,7 +64,7 @@ public abstract class Character implements Step{
     }
 
     public String toString(){
-        return this.name + " HP: " + this.health; 
+        return   this.getClass().getSimpleName()+ " " + this.name + " HP: " + this.health; 
     }
 
     public Character searchTarget(ArrayList<Character> targetTeam){
@@ -92,5 +94,18 @@ public abstract class Character implements Step{
 
     public String getTeam(){
         return this.team;
+    }
+
+    public boolean existClass(ArrayList<Character> team, String needClass){
+        for (Character character : team) {
+            if(character.getInfo() == needClass && !character.isDead()){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public String getName(){
+        return name;
     }
 }

@@ -3,6 +3,7 @@ package OOPJava.Game.Classes.Bowmans;
 import java.util.ArrayList;
 
 import OOPJava.Game.Classes.Character;
+import OOPJava.Game.Classes.Melee.Peasant;
 
 public abstract class Bowman extends Character{
 
@@ -14,18 +15,65 @@ public abstract class Bowman extends Character{
         this.arrows = arrows;
     }
     
-    public void createArrows(){
-        this.arrows += 5;
-    }
-
     @Override
     public void step(ArrayList<Character> teamBlue, ArrayList<Character> teamGreen) {
-        if(!this.isDead() && this.arrows > 0){
-            if(this.team == "green"){
+        if(team == "green"){
+            if (!isDead() && arrows == 0 && existPeasant(teamGreen)){
+                Character character = searchPeasant(teamGreen);
+                ((Peasant)character).step();
+                setArrows(character);
+            } 
+            if(!isDead() && arrows > 0){
                 this.attack(searchTarget(teamBlue));
-            } else {this.attack(searchTarget(teamGreen));}
-        } else if ((!this.isDead() && this.arrows == 0)){
-            createArrows();
+                arrows--;
+                System.out.println(name + " потратил стрелу");
+            }
+        }
+        if(team == "blue"){
+            if (!isDead() && arrows == 0 && existPeasant(teamBlue)){
+                Character character = searchPeasant(teamBlue);
+                ((Peasant)character).step();
+                setArrows(character);
+            }  
+            if(!isDead() && arrows > 0){
+                this.attack(searchTarget(teamGreen));
+                arrows--;
+                System.out.println(name + " потратил стрелу");
+            }   
         }
     }   
+    @Override
+    public String toString(){
+        return super.toString()+ " arrows: " + this.arrows; 
+    }
+
+    public int getArrows(){
+        return arrows;
+    }
+
+    public Character searchPeasant(ArrayList<Character> team){
+        for (Character character : team) { 
+            if((character.getInfo() == "Фермер"  && !character.isDead()) && !((Peasant)character).isBusy() ){
+                return character;
+            }
+        }
+        Character character = null;
+        return character;        
+    }
+    
+    public boolean existPeasant(ArrayList<Character> team){
+        for (Character character : team) {
+            if(character.getInfo() == "Фермер" && !character.isDead() && !((Peasant)character).isBusy()){
+                System.out.println("Нашёл фермера");
+                return true;
+            }
+        }
+        System.out.println("Не нашёл фермера");
+        return false;
+    }
+
+    public void setArrows(Character character){
+        arrows += 1;
+        System.out.println(character.getName() + " передал стрелу " + name);
+    }
 }
