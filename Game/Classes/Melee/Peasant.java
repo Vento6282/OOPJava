@@ -25,7 +25,6 @@ public class Peasant extends Character{
                 if(existClass(teamBlue, "Арбалетчик") || existClass(teamBlue, "Снайпер")){
                     Character bowman = searchBowman(teamBlue);
                     ((Bowman)bowman).setArrows(this);
-                    System.out.println("Передал в свой ход");
                 }
             } else {
                 if(existClass(teamGreen, "Арбалетчик") || existClass(teamGreen, "Снайпер")){
@@ -39,7 +38,6 @@ public class Peasant extends Character{
 
     public void step(){
         isBusy = true;
-        System.out.println("Стал занят");
     }
 
     public Character searchBowman (ArrayList<Character> team){

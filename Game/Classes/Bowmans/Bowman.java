@@ -26,7 +26,6 @@ public abstract class Bowman extends Character{
             if(!isDead() && arrows > 0){
                 this.attack(searchTarget(teamBlue));
                 arrows--;
-                System.out.println(name + " потратил стрелу");
             }
         }
         if(team == "blue"){
@@ -38,7 +37,6 @@ public abstract class Bowman extends Character{
             if(!isDead() && arrows > 0){
                 this.attack(searchTarget(teamGreen));
                 arrows--;
-                System.out.println(name + " потратил стрелу");
             }   
         }
     }   
@@ -64,16 +62,13 @@ public abstract class Bowman extends Character{
     public boolean existPeasant(ArrayList<Character> team){
         for (Character character : team) {
             if(character.getInfo() == "Фермер" && !character.isDead() && !((Peasant)character).isBusy()){
-                System.out.println("Нашёл фермера");
                 return true;
             }
         }
-        System.out.println("Не нашёл фермера");
         return false;
     }
 
     public void setArrows(Character character){
         arrows += 1;
-        System.out.println(character.getName() + " передал стрелу " + name);
     }
 }

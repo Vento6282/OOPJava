@@ -36,7 +36,6 @@ public abstract class Character implements Step{
 
     public void attack(Character target){
         target.getPhysicDamage(strength);
-        System.out.println(name + " атаковал " + target.name + " с силой " + (strength));
     }
 
     public void getPhysicDamage(int damage){

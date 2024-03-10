@@ -23,7 +23,6 @@ public abstract class Magician extends Character {
                         Character diedCharacter = searchDiedCharacter(teamGreen);
                         diedCharacter.setHealth(healthMax);
                         mana -= 10;
-                        System.out.println(name + " воскресил " + diedCharacter.getName());
                     } else
                         mana++;
                 } else if (mana >= 2 && existHurtCharacters(teamGreen)) {
@@ -33,7 +32,6 @@ public abstract class Magician extends Character {
                     } else {
                         hurtCharacter.setHealth(hurtCharacter.getHealth() + intellect);
                     }
-                    System.out.println(name + " вылечил " + hurtCharacter.getName());
                     mana -= 2;
                 } else if ((mana < 2 || !existHurtCharacters(teamGreen))) {
                     mana++;
@@ -44,7 +42,6 @@ public abstract class Magician extends Character {
                         Character diedCharacter = searchDiedCharacter(teamBlue);
                         diedCharacter.setHealth(healthMax);
                         mana -= 10;
-                        System.out.println(name + " воскресил " + diedCharacter.getName());
                     } else
                         mana++;
                 } else if (mana >= 2 && existHurtCharacters(teamBlue)) {
@@ -67,11 +64,9 @@ public abstract class Magician extends Character {
     public boolean existHurtCharacters(ArrayList<Character> team){
         for (Character character : team) {
             if(!character.isDead() && character.getHealthMax() > getHealth()){
-                System.out.println("Нашёл,что есть кого лечить");
                 return true;
             }
         }
-        System.out.println("Не нашёл кого вылечить");
         return false;
     }
 
